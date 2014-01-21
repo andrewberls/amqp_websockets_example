@@ -1,0 +1,26 @@
+<h1>Hello World</h1>
+
+<script type="text/javascript">
+  var conn = new WebSocket('ws://localhost:9000');
+
+  conn.onopen = function() {
+    // conn.send('ping');
+  };
+
+  conn.onmessage = function(json) {
+    var data = JSON.parse(json.data);
+    switch (data.type) {
+      case 'message':
+        console.log("Received: " +  data.msg);
+        break;
+      case 'join':
+        console.log(data);
+        break;
+    }
+  };
+
+  conn.onerror = function(err) {
+    console.log("Websocket error!");
+    console.log(err);
+  };
+</script>
