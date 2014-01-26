@@ -42,7 +42,7 @@ EM.run do
 
   logger.info("Starting WebSocket server...")
 
-  EM::WebSocket.run(host: '0.0.0.0', port: 9000) do |conn|
+  EM::WebSocket.run(host: '127.0.0.1', port: 9000) do |conn|
     conn.onopen do |handshake|
       logger.info("OPEN => client signature: #{conn.signature}")
       $clients << conn
